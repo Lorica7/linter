@@ -60,4 +60,4 @@ function logCounters () {
 
 logCounters ();
 
-console.log (betterWords.toString ());
+console.log (betterWords.join (' '));
