@@ -18,13 +18,25 @@
     <h1 class="intro container-md"> Improve and Analyze Your Text</h1>
     <p class="intro container-md">Use this linter to get a word count, and remove overused words.</p>
     <section class="formArea">
-        <form class="container-md">
+        <form class="container-md form">
             <div class="mb-3">
                 <label for="text-entry" class="form-label">Enter your text below.</label>
                 <textarea class="form-control" id="text-entry" rows="3"></textarea>
-                <button type="submit" class="btn btn-primary">Submit</button>
+
+                <button type="submit" class="btn btn-primary">Get Count</button>
+
+
             </div>
         </form>
+    </section>
+    <section class="output">
+        <h3>Counts</h3>
+        <ul>
+            <li>Words: <span class="totalWords"></span></li>
+            <li>Sentences: <span class="sentences"></span></li>
+            <li>Most Used Words: <span class="mostUsed"></span></li>
+            <li>Summary: <span class="summary"></span></li>
+        </ul>
     </section>
 </body>
 <script src="main.js"></script>
