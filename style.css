@@ -1,0 +1,31 @@
+body {
+  font-family: "Mukta", sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Zen Antique", serif;
+}
+
+p {
+  font-family: "Mukta", sans-serif;
+}
+
+.formArea {
+  max-width: 900px;
+  margin: auto;
+}
+
+button {
+  margin-top: 10px;
+}
+
+.intro {
+  max-width: 900px;
+  margin: auto;
+  text-align: center;
+}
