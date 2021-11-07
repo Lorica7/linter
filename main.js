@@ -1,15 +1,14 @@
 //Global Variables
 
-let story =
-  'Last weekend, I took literally the most beautiful bike ride of my life. The route is called "The 9W to Nyack" and it actually stretches all the way from Riverside Park in Manhattan to South Nyack, New Jersey. It\'s really an adventure from beginning to end! It is a 48 mile loop and it basically took me an entire day. I stopped at Riverbank State Park to take some extremely artsy photos. It was a short stop, though, because I had a really long way left to go. After a quick photo op at the very popular Little Red Lighthouse, I began my trek across the George Washington Bridge into New Jersey.  The GW is actually very long - 4,760 feet! I was already very tired by the time I got to the other side.  An hour later, I reached Greenbrook Nature Sanctuary, an extremely beautiful park along the coast of the Hudson.  Something that was very surprising to me was that near the end of the route you actually cross back into New York! At this point, you are very close to the end.';
-
+let story = '';
 let storyWords = story.split (' ');
 
 let overusedWords = ['really', 'very', 'basically'];
 
 let unnecessaryWords = ['extremely', 'literally', 'actually'];
 
-const btn = document.querySelector ('.btn');
+const btn1 = document.querySelector ('.btn-primary');
+const btn2 = document.querySelector ('.btn-success');
 
 // Count number of overused words
 
@@ -27,8 +26,6 @@ const overusedCounter = function (array1, array2) {
 
   return counter;
 };
-
-// console.log (overusedCounter (storyWords, overusedWords));
 
 //Count sentences
 
@@ -48,22 +45,18 @@ function printSentCounter (storyWords) {
 
 //Creat e counter object, with three count props
 
-let counterObj = {
-  wordCount: storyWords.length,
-  sentCount: printSentCounter (storyWords),
-  overUsedWordCount: overusedCounter (storyWords, overusedWords),
-};
-
-console.log (counterObj);
-
-const summary = `There are ${storyWords.length} words in this story. It has ${printSentCounter (storyWords)} sentences. The number of overused words is ${overusedCounter (storyWords, overusedWords)}.`;
-
-function logCounters () {
-  console.log (summary);
-}
-
 function printCountersSum () {
+  const summary = `There are ${storyWords.length} words in this story. It has ${printSentCounter (storyWords)} sentences. The number of overused words is ${overusedCounter (storyWords, overusedWords)}.`;
+  let counterObj = {
+    wordCount: storyWords.length,
+    sentCount: printSentCounter (storyWords),
+    overUsedWordCount: overusedCounter (storyWords, overusedWords),
+  };
+
+  console.log (counterObj);
+
   document.querySelector ('.summary').append (summary);
+  return counterObj;
 }
 
 // Count Individual words, find the most used
@@ -96,6 +89,11 @@ function getMostUsed (newStory) {
   document.querySelector ('.mostUsed').append (mostUsed.word);
 }
 
+function printWordsTotal (total) {
+  const sumPlace = document.querySelector ('.totalWords');
+  sumPlace.append (total);
+}
+
 btn.addEventListener ('click', function (e) {
   e.preventDefault ();
   const textarea = document.querySelector ('#text-entry');
@@ -103,10 +101,11 @@ btn.addEventListener ('click', function (e) {
   story = textarea.value;
   storyWords = story.split (' ');
   getMostUsed (story);
-  logCounters ();
+
   printCountersSum ();
   overusedCounter (storyWords, overusedWords);
-
+  printWordsTotal (storyWords.length);
+  console.log (storyWords);
   return storyWords;
 });
 
@@ -115,3 +114,5 @@ let betterWords = storyWords.filter (function (el) {
     return el;
   }
 });
+
+console.log (betterWords);
